@@ -1,4 +1,4 @@
-1. Base de la programmation
+1. **Base de la programmation**
 
 En python:
 
@@ -119,7 +119,6 @@ En Python : Utilisation des f-strings ou la méthode format() pour le formatage 
 age = 25
 print(f"J'ai {age} ans.")
 ```
-
 
 
 ## CONCLUSION

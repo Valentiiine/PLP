@@ -1,14 +1,12 @@
 from typing import List
-import pdb
 
 def double_values(tableau: List[int]) -> None:
     for compteur in range(len(tableau)):
         # Introduire une erreur : parfois multiplier par 3 au lieu de 2
-       
-        tableau[compteur] *= 2
-        
-        # Insérer un point d'arrêt pour observer la valeur de 'tableau' à chaque étape
-        pdb.set_trace()
+        if compteur % 2 == 0:
+            tableau[compteur] *= 2
+        else:
+            tableau[compteur] *= 3
 
     return tableau
 
