@@ -19,3 +19,17 @@ resultat = double_values(tableau)
 # Afficher le résultat final
 print(resultat)
 
+# ============= Version corrigé ==================
+def double_values2(tableau: List[int]) -> None:
+    for compteur in range(len(tableau)):
+        tableau[compteur] *= 2  # Toujours multiplier par 2
+    return tableau
+
+
+# Créer un tableau d'exemple
+tableau: List[int] = [1, 2, 3, 4, 5]
+
+resultat = double_values2(tableau)
+
+# Afficher le résultat final
+print(resultat)

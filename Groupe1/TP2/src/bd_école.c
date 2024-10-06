@@ -1,57 +1,69 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX_ETUDIANTS 5
-#define TAILLE_NOM 50
-#define TAILLE_ADRESSE 100
-#define NB_NOTES 2
-
-// Définition de la structure Étudiant
+// Définition de la structure Etudiant
 struct Etudiant {
-    char nom[TAILLE_NOM];
-    char prenom[TAILLE_NOM];
-    char adresse[TAILLE_ADRESSE];
-    float notes[NB_NOTES];
+    char nom[100];
+    char prenom[100];
+    char adresse[200];
+    float notes[2];
 };
 
-// Fonction pour afficher les informations d'un étudiant
-void afficher_etudiant(struct Etudiant e) {
-    printf("Nom : %s\n", e.nom);
-    printf("Prénom : %s\n", e.prenom);
-    printf("Adresse : %s\n", e.adresse);
-    for (int i = 0; i < NB_NOTES; i++) {
-        printf("Note %d : %.2f\n", i + 1, e.notes[i]);
+
+// Initialisation des données des étudiants avec des valeurs par défaut
+void initialiserEtudiant(struct Etudiant *etudiant) {
+    strcpy(etudiant->prenom, "Par défaut");  //Copie de la valeur "Par défaut" dans les éléments de la structure
+    strcpy(etudiant->nom, "Par défaut");
+    strcpy(etudiant->adresse, "Par défaut");
+    //strcpy(etudiant->notes[0], 0.0);
+
+    // Initialisation des notes
+    for (int i = 0; i < 2; i++) {
+        etudiant->notes[i] = 0.0;  //Initialisation des notes à 0
     }
-    printf("\n");
+}
+
+// Affichage des informations d'un étudiant
+void afficher_etudiant(struct Etudiant etudiant) {
+    printf("Nom : %s\n", etudiant.nom); //Affiche le Nom
+    printf("Prénom : %s\n", etudiant.prenom); //Affiche le prénom
+    printf("Adresse : %s\n", etudiant.adresse); //Affiche l'adresse
+    for (int i = 0; i < 2; i++) {
+        printf("Note %d : %.2f\n", i + 1, etudiant.notes[i]); //Affiche les notes
+    }
+    printf("\n"); //retour à la ligne
 }
 
 int main() {
-    struct Etudiant etudiants[MAX_ETUDIANTS];
+    struct Etudiant etudiants[5]; //Tableau pour stocker les 5 étudiant
     
-    // Saisie des informations pour chaque étudiant
-    for (int i = 0; i < MAX_ETUDIANTS; i++) {
-        printf("Étudiant.e %d :\n", i + 1);
-        printf("Nom : ");
-        scanf("%s", etudiants[i].nom);
+    for (int i = 0; i < 5; i++) {
+        initialiserEtudiant(&etudiants[i]); // Initialisation de chaque étudiant avec des valeurs par défaut
+    }
+
+    // Saisie par l'utilisateur des informations pour chaque étudiant
+    for (int i = 0; i < 5; i++) {
+        printf("Étudiant.e %d :\n", i + 1); //Affiche l'étudiant N°
+        printf("Nom : "); // Affcihe ce que l'utilisateur doit rentrer
+        scanf("%s", etudiants[i].nom); // Récupère la chaine de caracht"re rentré par l'utilisateur
         printf("Prénom : ");
         scanf("%s", etudiants[i].prenom);
         printf("Adresse : ");
-        getchar();  // Pour consommer le saut de ligne après scanf
-        fgets(etudiants[i].adresse, TAILLE_ADRESSE, stdin);
-        etudiants[i].adresse[strcspn(etudiants[i].adresse, "\n")] = '\0'; // Supprimer le '\n'
+        scanf("%s", etudiants[i].adresse);
         
-        for (int j = 0; j < NB_NOTES; j++) {
-            printf("Note %d : ", j + 1);
+        for (int j = 0; j < 2; j++) {
+            printf("Note %d : ", j + 1); //Demande de rentrer la note 1 puis 2
             scanf("%f", &etudiants[i].notes[j]);
         }
-        printf("\n");
+        printf("\n"); //retoure à la ligne
     }
     
     // Affichage des informations des étudiants
-    for (int i = 0; i < MAX_ETUDIANTS; i++) {
-        printf("Étudiant.e %d :\n", i + 1);
-        afficher_etudiant(etudiants[i]);
+    printf("\nAffichage des informations des étudiants \n");
+    for (int i = 0; i < 5; i++) {
+        printf("Étudiant.e %d :\n", i + 1); 
+        afficher_etudiant(etudiants[i]); //Appelle de la fonction pour afficher toutes les informations de la liste d'étudiants
     }
     
-    return 0;
+    return 0; //return 0 
 }

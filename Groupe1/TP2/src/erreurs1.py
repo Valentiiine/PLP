@@ -1,11 +1,11 @@
 from typing import List
-import pdb
+import pdb #Bibliothèque qui permet de faire le débogeur comme gdb
 
 def double_values(tableau: List[int]) -> None:
     for compteur in range(len(tableau)):
         # Introduire une erreur : parfois multiplier par 3 au lieu de 2
        
-        tableau[compteur] *= 2
+        tableau[compteur] *= 2  #Double la valeur à l'indice du compteur du tableau 
         
         # Insérer un point d'arrêt pour observer la valeur de 'tableau' à chaque étape
         pdb.set_trace()
@@ -20,4 +20,3 @@ resultat = double_values(tableau)
 
 # Afficher le résultat final
 print(resultat)
-

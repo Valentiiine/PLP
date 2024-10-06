@@ -69,13 +69,13 @@ En C:
     
     Les opérateurs logiques sont && (ET), || (OU), ! (NON). En Python, ce sont des mots-clés : and, or, not.
 
-Exemple:
+Exemple en C :
 
 ```C
 if (a && b) { /* C */ }
 ```
 
-Exemple en python:
+Exemple en python :
             
 ```Python
 if a and b:   
