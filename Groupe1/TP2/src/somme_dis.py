@@ -28,3 +28,21 @@ if __name__ == "__main__":
     # Utilisation du module ""dis" pour désassembler le bytecode 
     dis.dis(calculer_somme) 
     main()
+
+
+"""
+ `LOAD_GLOBAL 0 (range)` : Charge la fonction globale `range`.
+- `CALL_FUNCTION 1` : Appelle `range(n)` avec un argument.
+- `GET_ITER` : Récupère un itérateur à partir de `range`.
+- `FOR_ITER 16` : Obtient l'élément suivant de l'itérateur. Si aucun élément n'est disponible, saute à la fin de la boucle.
+- `INPLACE_ADD` : Ajoute la valeur courante de `i` à `somme`.
+
+
+Remplacment de la boucle for par la boucle while
+
+
+- La boucle while utilise des instructions comme `COMPARE_OP` pour comparer `i` et `n`, et des sauts conditionnels (`POP_JUMP_IF_FALSE` et `JUMP_ABSOLUTE`).
+- La boucle for utilise `FOR_ITER` pour gérer l'itération et la fin de la boucle.
+- La boucle while est plus explicite, avec des instructions supplémentaires pour gérer manuellement l'indice `i` et les conditions de fin.
+
+"""

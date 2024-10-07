@@ -33,3 +33,10 @@ resultat = double_values2(tableau)
 
 # Afficher le résultat final
 print(resultat)
+
+
+#Programme avec une erreur, corrgiée au cours de l'exercice.
+#Permettant d'explorer les fonctionnalités de pdb.
+
+#Python3 -m pdb exercice_pdb.py
+#Les indices impairs (1, 3, 5, ...) sont incorrectement multipliés par 3, comme observé en pdb

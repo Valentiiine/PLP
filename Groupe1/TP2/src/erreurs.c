@@ -10,3 +10,15 @@ int main() {
 
    return (0);
 }
+
+//Introduction à gdb en C
+//$ gcc -ggdb3 erreurs.c -o erreurs -> Compiler avec les informations de débogage
+//$ gdb erreurs -> Démarrer GDB
+//(gdb) r -> Exécuter le programme dans GDB
+//(gdb) break erreurs.c:10 -> Ajouter des breakpoints
+
+//L'erreur principale est que la condition de la boucle utilise sizeof(tableau) 
+//qui renvoie la taille en octets, et non le nombre d'éléments. Cela conduit à une
+//tentative d'accès à des indices de tableau hors limites
+
+//Pour corriger cela, il faut remplacer `sizeof(tableau)` par `100`

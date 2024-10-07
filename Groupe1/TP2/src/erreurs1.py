@@ -20,3 +20,12 @@ resultat = double_values(tableau)
 
 # Afficher le résultat final
 print(resultat)
+
+"""
+fichier erreurs1.py
+Programme avec une ereur, corrigée au cours de l'exercice. 
+Utilisation de pdb pour debogger le code grâce a u point d'arrêt présent dans le code
+
+Le problème est que pour les indices impairs, les valeurs sont multipliées par 3 au lieu de 2.
+il suffit de supprimer la condition else
+"""
