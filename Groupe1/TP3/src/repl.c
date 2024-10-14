@@ -1,21 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-
+#include "lexer.h"
+#include "parseur.h"
+#include "evaluation.h"
 /**
  * Programme qui simule un interpréteur de commandes simple.
  * Il lit les commandes utilisateur et les traite en fonction de leur contenu.
  */
-
-void afficher_version();
-
-void afficher_aide();
-
-void afficher_date();
-
-void traiter_quit(int* continuer);
-
-void traiter_echo(char* commande);
 
 struct Commande{
     char* commande;
@@ -25,7 +17,7 @@ struct Commande{
 
 void afficher_version()
 {
-    printf("Version : " __VERSION__ "\n");
+    printf("Version de l'interpréteur : 5.0");
 };
 
 void traiter_quit(int* continuer)
@@ -73,8 +65,8 @@ int main()
         {"date", afficher_date},
         {"aide", afficher_aide},
         {"help", afficher_aide},
-        {"quit", (void (*)(char *))traiter_quit},
-        {"quitter", (void (*)(char *))traiter_quit},
+        {"quit", /*(void (*)(char *))*/traiter_quit},
+        {"quitter", /*(void (*)(char *))*/traiter_quit},
 
     };
     // Boucle principale qui lit et traite les commandes utilisateur
@@ -119,7 +111,16 @@ int main()
                 commande_reconnue=1;
                 break;
             }
+            
+            else{
+                init_lexer(commande);
+                Expression expr = parse_expression();
+                double result = eval_expression(expr);
 
+                printf("Résultat : %.2f\n", result);
+
+                return 0;
+                }
 
         }
 
@@ -167,5 +168,3 @@ int main()
 
     return 0;
 }
-
-
