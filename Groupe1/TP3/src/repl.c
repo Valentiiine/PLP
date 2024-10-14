@@ -25,7 +25,7 @@ struct Commande{
 
 void afficher_version()
 {
-    printf("Version : " __VERSION__);
+    printf("Version : " __VERSION__ "\n");
 };
 
 void traiter_quit(int* continuer)
