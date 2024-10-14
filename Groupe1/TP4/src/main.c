@@ -14,5 +14,9 @@ int main() {
     // Afficher l'expression postfixée
     printf("Expression postfixée : %s\n", postfix);
 
+    double result = eval_postfix(postfix);
+    
+    printf("Résultat : %.2f\n", result);
+
     return 0;
 }
