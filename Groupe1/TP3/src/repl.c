@@ -177,3 +177,28 @@ int main()
     return 0;
 
 }
+
+/*Questions à réfléchir :
+
+ Qu'est-ce qui se passe lorsque vous tapez une commande inconnue? 
+
+Lorsque une commande que l'interpréteur ne reconnaît pas, il retourne un message "Commande non reconnue...". Cela se produit parce que le programme compare la chaîne entrée avec les commandes qu'il connaît (par exemple, echo, quit, etc.). Lorsqu'il ne trouve pas de correspondance, il renvoie ce message d'erreur.
+
+
+
+
+ Comment l'interpréteur traite les espaces dans les commandes? 
+
+L'interpréteur ne gère pas les espaces en les utilisant comme délimiteurs entre les différentes parties d'une commande. Pour echo il prend seulement le text après 5 charactère, les autres commandes les espaces n'ont pas d'importance
+
+
+ Qu'est-ce qui se passe lorsque vous utilisez la commande echo avec des arguments? 
+
+La commande echo avec des arguments (par exemple, echo Bonjour à tous), le programme extrait tout ce qui suit le mot echo et l'affiche. Cela fonctionne parce que la fonction traiter_echo affiche tout à partir du 5e caractère de la commande :
+
+
+
+
+ Comment pourriez-vous modifier le code pour ajouter de nouvelles commandes? 
+
+Pour ajouter de nouvelles commandes dans le programme on le fait grâce à la structure "Commande". Puis ajouter une nouvelle commande en définissant une nouvelle fonction, puis en l’ajoutant dans le tableau commandes.*/
