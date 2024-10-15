@@ -24,6 +24,7 @@ void traiter_quit(int* continuer)
 {
     // Quitte le programme si la commande est "quit"
     printf("Arrêt...\n");
+    *continuer = 0;
 };
 
 void afficher_aide()
@@ -96,7 +97,7 @@ int main()
                 if (strcmp(commandes[i].commande, "quit") == 0|| strcmp(commandes[i].commande, "quitter")==0)
                 {
                      traiter_quit(&continuer);
-                     continuer=0;
+                     //continuer=0;
                 }
                 else
                 {
@@ -111,18 +112,25 @@ int main()
                 commande_reconnue=1;
                 break;
             }
-            
-            else{
-                init_lexer(commande);
-                Expression expr = parse_expression();
-                double result = eval_expression(expr);
-
-                printf("Résultat : %.2f\n", result);
-
-                return 0;
-                }
 
         }
+
+        if(!commande_reconnue)
+        {       Expression result;
+                if (parse_expression(commande, &result)) {
+                commande_reconnue=1;
+                /*// Si la syntaxe est correcte, afficher la représentation interne
+                printf("Opération : %c\n", result.operator);
+                printf("Opérande 1 : %d\n", result.operand1);
+                printf("Opérande 2 : %d\n", result.operand2);*/
+
+                // Appeler la fonction d'évaluation
+                double eval_result = eval_expression(result);
+                printf("Le résultat est : %.2f\n", eval_result);
+                } else {
+                printf("Erreur lors du traitement de l'expression.\n");
+                break;
+                }}
 
         if (!commande_reconnue)
         {
@@ -165,6 +173,7 @@ int main()
 
         printf("\n"); // Saut de ligne après la sortie
     }
-
+   
     return 0;
+
 }

@@ -1,25 +1,7 @@
 #ifndef LEXER_H
 #define LEXER_H
 
-typedef enum {
-    TOKEN_NUMBER,
-    TOKEN_PLUS,
-    TOKEN_MINUS,
-    TOKEN_MULTIPLY,
-    TOKEN_DIVIDE,
-    TOKEN_INVALID,
-    TOKEN_END
-} TokenType;
-
-typedef struct {
-    TokenType type;
-    double value;  // Utilisé seulement si le type est TOKEN_NUMBER
-} Token;
-
-// Fonction pour initialiser le tokenizer avec une chaîne
-void init_lexer(const char *expression);
-
-// Fonction pour obtenir le prochain jeton (token)
-Token get_next_token();
+// Fonction pour extraire les nombres et l'opérateur depuis une chaîne de caractères
+void extract_numbers_and_operator(const char* expression, int* num1, int* num2, char* operator);
 
 #endif

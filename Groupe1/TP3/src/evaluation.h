@@ -3,7 +3,8 @@
 
 #include "parseur.h"
 
-// Fonction pour évaluer une expression et renvoyer le résultat
+// Fonction pour évaluer une expression mathématique
 double eval_expression(Expression expr);
 
 #endif
+

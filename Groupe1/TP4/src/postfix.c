@@ -11,6 +11,11 @@ typedef struct {
     int top;
 } Stack;
 
+typedef struct {
+    double data[MAX_STACK_SIZE];
+    int top;
+} OperandStack;
+
 // Initialiser la pile
 void init_stack(Stack *stack) {
     stack->top = -1;
@@ -105,7 +110,7 @@ void infix_to_postfix(const char *infix, char *postfix) {
 }
 
 // Dépiler un opérande
-double pop_operand(Stack *stack) {
+double pop_operand(OperandStack *stack) {
     if (!is_empty(stack)) {
         return stack->data[stack->top--];
     } else {
@@ -115,7 +120,7 @@ double pop_operand(Stack *stack) {
 }
 
 // Empiler un opérande
-void push_operand(Stack *stack, double value) {
+void push_operand(OperandStack *stack, double value) {
     if (stack->top < MAX_STACK_SIZE - 1) {
         stack->data[++stack->top] = value;
     } else {
@@ -126,7 +131,7 @@ void push_operand(Stack *stack, double value) {
 
 // Fonction principale pour évaluer une expression postfixée
 double eval_postfix(const char *postfix) {
-    Stack stack;
+    OperandStack stack;
     init_stack(&stack);
     
     for (int i = 0; postfix[i] != '\0'; i++) {

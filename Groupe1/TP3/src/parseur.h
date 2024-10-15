@@ -1,13 +1,14 @@
 #ifndef PARSEUR_H
 #define PARSEUR_H
 
+// Structure pour représenter une expression mathématique
 typedef struct {
     char operator;
-    double operand1;
-    double operand2;
+    int operand1;
+    int operand2;
 } Expression;
 
-// Fonction pour analyser une liste de jetons et créer une expression
-Expression parse_expression();
+// Fonction pour analyser une expression et remplir la structure Expression
+int parse_expression(const char *expression, Expression *result);
 
 #endif
